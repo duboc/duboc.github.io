@@ -33,6 +33,13 @@ essays=(_essays/*.md)
 if [[ ${#essays[@]} -eq 0 ]]; then
   echo "FAIL no essays in _essays/"; exit 1
 fi
+
+entries="$(curl -sS "${BASE_URL}/feed.xml?cb=$(date +%s)" | { grep -o '<entry>' || true; } | wc -l | tr -d ' ')"
+if [[ "$entries" -lt ${#essays[@]} ]]; then
+  echo "FAIL /feed.xml has $entries entries, expected ${#essays[@]}"; failures=$((failures + 1))
+else
+  echo "OK   /feed.xml entries=$entries"
+fi
 for file in "${essays[@]}"; do
   name="$(basename "$file" .md)"
   slug="${name#[0-9][0-9]-}"

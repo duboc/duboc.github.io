@@ -18,8 +18,14 @@ plugins:
   - jekyll-seo-tag
 
 feed:
+  # jekyll-feed writes the posts feed to feed.path and collection feeds to
+  # /feed/<name>.xml by default. This blog has no posts, so the essays feed
+  # takes /feed.xml and the (empty) posts feed moves out of the way.
+  path: /feed/posts.xml
+  posts_limit: 50
   collections:
-    - essays
+    essays:
+      path: /feed.xml
 
 collections:
   essays:
