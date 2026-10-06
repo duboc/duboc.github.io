@@ -6,6 +6,18 @@ the-future-of-software:
   question_pt: Quando o código fica barato, o que fica caro?
   intro_en: Thirteen one-page essays. Each one stands on its own; read them in order or jump anywhere.
   intro_pt: Treze ensaios de uma página. Cada um se sustenta sozinho; leia em ordem ou pule para qualquer um.
+  credit_en: >-
+    Most of these essays began as responses to Thomas Dullien's talk
+    <a href="https://thomasdullien.github.io/about/slides/An-age-of-experimentation-BlueHat-Asia-2026.pdf"><em>An age of experimentation</em></a>
+    (Microsoft BlueHat Asia, Singapore, September 2026) and Thorsten Ball's post
+    <a href="https://thorstenball.com/blog/2026/09/19/what-i-believe-about-the-future-of-software-development/"><em>What I believe about the future of software development</em></a>.
+    Each essay credits its sources at the end.
+  credit_pt: >-
+    A maior parte destes ensaios nasceu como resposta à palestra de Thomas Dullien
+    <a href="https://thomasdullien.github.io/about/slides/An-age-of-experimentation-BlueHat-Asia-2026.pdf"><em>An age of experimentation</em></a>
+    (Microsoft BlueHat Asia, Singapura, setembro de 2026) e ao post de Thorsten Ball
+    <a href="https://thorstenball.com/blog/2026/09/19/what-i-believe-about-the-future-of-software-development/"><em>What I believe about the future of software development</em></a>.
+    Cada ensaio credita suas fontes no final.
   parts:
     - {n: 1, en: "I · Discovery", pt: "I · Descoberta"}
     - {n: 2, en: "II · Craft", pt: "II · Ofício"}

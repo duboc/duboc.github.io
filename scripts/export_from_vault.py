@@ -22,6 +22,7 @@ SERIES: dict[str, str] = {"The Future of Software": "the-future-of-software"}
 
 FLAG_EN = "🇺🇸"
 FLAG_PT = "🇧🇷"
+SOURCES = "🔗"
 ESSAY_PREFIX = "✍️"
 ROMAN = {"I": 1, "II": 2, "III": 3, "IV": 4, "V": 5}
 GENERATED_MARK = "generated: true"
@@ -44,6 +45,7 @@ class Essay:
     series: str
     part: int
     order: int
+    sources: str = ""
 
 
 def _nfc(text: str) -> str:
@@ -73,7 +75,7 @@ def _sections(body: str) -> dict[str, tuple[str, str]]:
     parts = re.split(r"^## (.+)$", body, flags=re.MULTILINE)
     for heading, content in zip(parts[1::2], parts[2::2]):
         heading = heading.strip()
-        for flag in (FLAG_EN, FLAG_PT):
+        for flag in (FLAG_EN, FLAG_PT, SOURCES):
             if heading.startswith(flag):
                 found[flag] = (heading[len(flag):].strip(), content)
     return found
@@ -84,6 +86,15 @@ def _clean(content: str) -> str:
     content = re.sub(r"\[\[([^\]]+)\]\]", r"\1", content)
     lines = [line for line in content.splitlines() if line.strip() != "---"]
     return re.sub(r"\n{3,}", "\n\n", "\n".join(lines)).strip()
+
+
+def _sources(content: str) -> str:
+    """Markdown bullet list of sources; every bullet must carry a link."""
+    bullets = [line.strip() for line in _clean(content).splitlines() if line.strip()]
+    for line in bullets:
+        if not line.startswith("- ") or not re.search(r"\]\(https?://[^)\s]+\)", line):
+            raise ExportError(f"source line needs a '- ' bullet with a markdown link: {line!r}")
+    return "\n".join(bullets)
 
 
 def _first_paragraph(body: str) -> str:
@@ -134,6 +145,7 @@ def parse_essay(text: str) -> Essay:
         series=SERIES[series_name],
         part=ROMAN[part_match.group(1)],
         order=order,
+        sources=_sources(sections[SOURCES][1]) if SOURCES in sections else "",
     )
 
 
@@ -171,8 +183,24 @@ def render_essay(e: Essay) -> str:
             "",
             "</section>",
             "",
+            *_render_sources(e.sources),
         ]
     )
+
+
+def _render_sources(sources: str) -> list[str]:
+    if not sources:
+        return []
+    return [
+        '<aside class="sources" markdown="1">',
+        "",
+        '<p class="sources-label"><span lang="en">Based on</span><span lang="pt-BR">Baseado em</span></p>',
+        "",
+        sources,
+        "",
+        "</aside>",
+        "",
+    ]
 
 
 def _is_generated(path: Path) -> bool:

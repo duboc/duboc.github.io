@@ -130,3 +130,43 @@ def test_export_removes_stale_generated_files(tmp_path):
     export([src], out)
     assert not (out / "99-old.md").exists()
     assert (out / "manual.md").exists()
+
+
+SOURCE_LINE = (
+    "- Thorsten Ball, [*What I believe about the future of software development*]"
+    "(https://thorstenball.com/blog/2026/09/19/what-i-believe-about-the-future-of-software-development/), "
+    "September 2026."
+)
+WITH_SOURCES = SAMPLE.replace(
+    "## 🌱 Texto-Semente Original",
+    f"## 🔗 Fontes\n\n{SOURCE_LINE}\n\n---\n\n## 🌱 Texto-Semente Original",
+)
+
+
+def test_parse_keeps_sources_section():
+    e = parse_essay(WITH_SOURCES)
+    assert e.sources == SOURCE_LINE
+    assert "Seed quote" not in e.sources
+    assert "Fontes" not in e.body_pt and "thorstenball" not in e.body_pt
+
+
+def test_parse_without_sources_is_empty():
+    assert parse_essay(SAMPLE).sources == ""
+
+
+def test_parse_source_without_link_fails():
+    bad = WITH_SOURCES.replace(SOURCE_LINE, "- Somebody, a post I forgot to link.")
+    with pytest.raises(ExportError, match="link"):
+        parse_essay(bad)
+
+
+def test_render_sources_block():
+    out = render_essay(parse_essay(WITH_SOURCES))
+    assert '<aside class="sources" markdown="1">' in out
+    assert '<span lang="en">Based on</span><span lang="pt-BR">Baseado em</span>' in out
+    assert out.index("</section>\n\n<section lang=\"pt-BR\"") < out.index('<aside class="sources"')
+    assert SOURCE_LINE in out
+
+
+def test_render_without_sources_has_no_block():
+    assert 'class="sources"' not in render_essay(parse_essay(SAMPLE))
