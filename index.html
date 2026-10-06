@@ -1,1 +1,44 @@
-Hello World
+---
+layout: default
+---
+<section class="intro-home">
+  <p class="tagline">{% include lang-title.html en=site.description pt=site.description_pt %}</p>
+</section>
+
+{%- for entry in site.data.series %}
+{%- assign key = entry[0] -%}
+{%- assign series = entry[1] -%}
+{%- assign items = site.essays | where: "series", key | sort: "order" -%}
+{%- if items.size > 0 %}
+<section class="series-card">
+  <p class="kicker">{% include lang-title.html en="Series" pt="Série" %} · {{ items.size }} {% include lang-title.html en="essays" pt="ensaios" %}</p>
+  <h2><a href="{{ series.url | relative_url }}">{% include lang-title.html en=series.title_en pt=series.title_pt %}</a></h2>
+  <p class="question">{% include lang-title.html en=series.question_en pt=series.question_pt %}</p>
+  <ul class="essay-list compact">
+    {%- for e in items %}
+    <li>
+      <a href="{{ e.url | relative_url }}">
+        <span class="num">{{ e.order | prepend: "0" | slice: -2, 2 }}</span>
+        <span class="title">{% include lang-title.html en=e.title_en pt=e.title_pt %}</span>
+      </a>
+    </li>
+    {%- endfor %}
+  </ul>
+</section>
+{%- endif %}
+{%- endfor %}
+
+{%- assign standalone = site.essays | where_exp: "e", "e.series == nil" | sort: "date" | reverse -%}
+{%- if standalone.size > 0 %}
+<section class="standalone">
+  <h2>{% include lang-title.html en="Essays" pt="Ensaios" %}</h2>
+  <ul class="essay-list">
+    {%- for e in standalone %}
+    <li>
+      <a href="{{ e.url | relative_url }}"><span class="title">{% include lang-title.html en=e.title_en pt=e.title_pt %}</span></a>
+      <p class="hook">{% include lang-title.html en=e.description pt=e.description_pt %}</p>
+    </li>
+    {%- endfor %}
+  </ul>
+</section>
+{%- endif %}

@@ -1,0 +1,32 @@
+---
+layout: default
+---
+{%- assign series = site.data.series[page.series] -%}
+{%- assign items = site.essays | where: "series", page.series | sort: "order" -%}
+<article class="series">
+  <header class="series-head">
+    <p class="kicker">{% include lang-title.html en="Series" pt="Série" %} · {{ items.size }} {% include lang-title.html en="essays" pt="ensaios" %}</p>
+    <h1>{% include lang-title.html en=series.title_en pt=series.title_pt %}</h1>
+    <p class="question">{% include lang-title.html en=series.question_en pt=series.question_pt %}</p>
+    <p class="intro">{% include lang-title.html en=series.intro_en pt=series.intro_pt %}</p>
+  </header>
+
+  {%- for p in series.parts %}
+  <section class="part">
+    <h2>{% include lang-title.html en=p.en pt=p.pt %}</h2>
+    <ul class="essay-list">
+      {%- for e in items -%}
+      {%- if e.part == p.n %}
+      <li>
+        <a href="{{ e.url | relative_url }}">
+          <span class="num">{{ e.order | prepend: "0" | slice: -2, 2 }}</span>
+          <span class="title">{% include lang-title.html en=e.title_en pt=e.title_pt %}</span>
+        </a>
+        <p class="hook">{% include lang-title.html en=e.description pt=e.description_pt %}</p>
+      </li>
+      {%- endif -%}
+      {%- endfor %}
+    </ul>
+  </section>
+  {%- endfor %}
+</article>

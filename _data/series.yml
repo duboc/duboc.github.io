@@ -1,0 +1,14 @@
+the-future-of-software:
+  url: /the-future-of-software/
+  title_en: The Future of Software
+  title_pt: O Futuro do Software
+  question_en: When code gets cheap, what gets expensive?
+  question_pt: Quando o código fica barato, o que fica caro?
+  intro_en: Thirteen one-page essays. Each one stands on its own; read them in order or jump anywhere.
+  intro_pt: Treze ensaios de uma página. Cada um se sustenta sozinho; leia em ordem ou pule para qualquer um.
+  parts:
+    - {n: 1, en: "I · Discovery", pt: "I · Descoberta"}
+    - {n: 2, en: "II · Craft", pt: "II · Ofício"}
+    - {n: 3, en: "III · People", pt: "III · Pessoas"}
+    - {n: 4, en: "IV · Platform", pt: "IV · Plataforma"}
+    - {n: 5, en: "V · Closing", pt: "V · Fechamento"}

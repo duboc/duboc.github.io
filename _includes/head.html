@@ -1,0 +1,49 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+{% seo %}
+{% feed_meta %}
+<link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
+<script>
+  (function () {
+    var d = document.documentElement;
+    var stored = null;
+    d.className += " js";
+
+    function normalize(value) {
+      if (!value) return null;
+      if (/^pt/i.test(value)) return "pt-BR";
+      if (/^en/i.test(value)) return "en";
+      return null;
+    }
+
+    function apply(lang) {
+      d.setAttribute("data-lang", lang);
+      d.lang = lang;
+      var buttons = document.querySelectorAll("[data-set-lang]");
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].setAttribute("aria-pressed", String(buttons[i].getAttribute("data-set-lang") === lang));
+      }
+    }
+
+    function save(lang) {
+      try { localStorage.setItem("lang", lang); } catch (e) { /* storage unavailable */ }
+    }
+
+    var fromQuery = normalize(new URLSearchParams(window.location.search).get("lang"));
+    try { stored = normalize(localStorage.getItem("lang")); } catch (e) { stored = null; }
+    var lang = fromQuery || stored || normalize(navigator.language) || "en";
+    if (fromQuery) save(lang);
+
+    window.setLang = function (value) {
+      var next = normalize(value) || "en";
+      apply(next);
+      save(next);
+    };
+
+    apply(lang);
+    document.addEventListener("DOMContentLoaded", function () {
+      apply(d.getAttribute("data-lang"));
+    });
+  })();
+</script>

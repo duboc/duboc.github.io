@@ -1,0 +1,10 @@
+<footer class="site-footer">
+  <p>
+    © {{ site.time | date: "%Y" }} {{ site.author }} ·
+    {% include lang-title.html en="Views are my own." pt="As opiniões são minhas." %}
+  </p>
+  <p>
+    <a href="https://github.com/{{ site.github_username }}">GitHub</a> ·
+    <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
+  </p>
+</footer>

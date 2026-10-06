@@ -1,0 +1,52 @@
+---
+layout: default
+---
+{%- assign series = site.data.series[page.series] -%}
+{%- assign items = site.essays | where: "series", page.series | sort: "order" -%}
+{%- for p in series.parts -%}{%- if p.n == page.part -%}{%- assign part = p -%}{%- endif -%}{%- endfor -%}
+{%- assign idx = -1 -%}
+{%- for e in items -%}{%- if e.url == page.url -%}{%- assign idx = forloop.index0 -%}{%- endif -%}{%- endfor -%}
+<article class="essay">
+  <header class="essay-head">
+    {%- if series %}
+    <p class="kicker">
+      <a href="{{ series.url | relative_url }}">{% include lang-title.html en=series.title_en pt=series.title_pt %}</a>
+      {%- if part %} · {% include lang-title.html en=part.en pt=part.pt %}{% endif %}
+      · <span class="num">{{ page.order | prepend: "0" | slice: -2, 2 }}</span>
+    </p>
+    {%- endif %}
+    <h1>{% include lang-title.html en=page.title_en pt=page.title_pt %}</h1>
+  </header>
+
+  <div class="essay-body">
+{{ content }}
+  </div>
+
+  {%- if series and idx >= 0 %}
+  <nav class="essay-nav" aria-label="Series navigation">
+    {%- if idx > 0 -%}
+      {%- assign prev_i = idx | minus: 1 -%}
+      {%- assign prev = items[prev_i] %}
+    <a class="prev" href="{{ prev.url | relative_url }}">
+      <span class="label">{% include lang-title.html en="← Previous" pt="← Anterior" %}</span>
+      {% include lang-title.html en=prev.title_en pt=prev.title_pt %}
+    </a>
+    {%- else %}
+    <span></span>
+    {%- endif -%}
+    {%- assign next_i = idx | plus: 1 -%}
+    {%- if next_i < items.size -%}
+      {%- assign next = items[next_i] %}
+    <a class="next" href="{{ next.url | relative_url }}">
+      <span class="label">{% include lang-title.html en="Next →" pt="Próximo →" %}</span>
+      {% include lang-title.html en=next.title_en pt=next.title_pt %}
+    </a>
+    {%- else %}
+    <a class="next" href="{{ series.url | relative_url }}">
+      <span class="label">{% include lang-title.html en="Series →" pt="Série →" %}</span>
+      {% include lang-title.html en=series.title_en pt=series.title_pt %}
+    </a>
+    {%- endif %}
+  </nav>
+  {%- endif %}
+</article>

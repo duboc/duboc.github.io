@@ -1,0 +1,42 @@
+title: Anderson Duboc
+description: Thinking out loud about software, AI, and the people who build it.
+description_pt: Pensando em voz alta sobre software, IA e as pessoas que constroem.
+author: Anderson Duboc
+url: https://duboc.github.io
+baseurl: ""
+lang: en
+timezone: America/Sao_Paulo
+github_username: duboc
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  parse_block_html: false
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+feed:
+  collections:
+    - essays
+
+collections:
+  essays:
+    output: true
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+
+exclude:
+  - docs
+  - scripts
+  - tests
+  - Justfile
+  - AGENTS.md
+  - README.md
+  - pyproject.toml
+  - uv.lock
