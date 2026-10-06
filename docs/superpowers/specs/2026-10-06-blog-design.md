@@ -1,18 +1,18 @@
 # duboc.github.io — Personal Blog Design
 
-**Date:** 2026-10-06 · **Status:** draft for review
+**Date:** 2026-10-06 · **Status:** approved
 
 ## Goal
 
 Turn `duboc.github.io` (today a 2020 "Hello World") into Anderson Duboc's
 personal blog: a place to publish thinking in public. The first content is
-the essay series **The Future of Software** (13 one-page essays, EN + PT),
-plus the standalone essay **The Whiteboard Defense**. More essays and series
-will follow.
+the essay series **The Future of Software** (13 one-page essays, EN + PT).
+More essays and series will follow. **The Whiteboard Defense** stays out of
+this first release.
 
 ## Success criteria
 
-1. `https://duboc.github.io/` lists the series and standalone essays.
+1. `https://duboc.github.io/` lists the series (and, later, standalone essays).
 2. Every essay has one stable URL with an EN/PT toggle.
 3. Republishing after an edit in the Obsidian vault is one command + push.
 4. Zero build infrastructure beyond native GitHub Pages (no Actions).
@@ -37,13 +37,13 @@ will follow.
 
 | URL | Content |
 |---|---|
-| `/` | Home: tagline, series card(s), standalone essays, newest first |
+| `/` | Home: tagline, series card(s); a standalone-essays list renders only when such essays exist |
 | `/the-future-of-software/` | Series hub: one-line framing question, essays grouped by the 5 parts |
 | `/essays/<slug>/` | One essay. Prev/next within its series |
 | `/feed.xml` | RSS (jekyll-feed, collection `essays`) |
 
 Slugs come from the English title: `fire-not-engine`, `post-binary`, …,
-`the-whiteboard-defense`. Essay URLs do not include the series, so an essay
+`focus-not-fear`. Essay URLs do not include the series, so an essay
 can join or leave a series without breaking links.
 
 ## Content model
@@ -101,18 +101,22 @@ tracking, no external requests.
 
 `scripts/export_from_vault.py` (Python stdlib, run with `uv run`):
 
-- Input: vault essays folder (`--vault` argument or `NOTAS_VAULT` env var;
-  no personal path hardcoded in the repo). Reads every `✍️ *.md` under
-  `30_ATLAS/essays/` recursively.
+- Input: one or more essay folders passed as arguments; the `Justfile`
+  resolves them from the `NOTAS_VAULT` env var (no personal path hardcoded
+  in the repo). This release exports only
+  `30_ATLAS/essays/the-future-of-software/`. Reads every `✍️ *.md` in each
+  folder (the hub note is ignored).
 - Keeps **only** the `## 🇺🇸 …` and `## 🇧🇷 …` sections. Everything else
   (the vault header line, word counts, wikilinks, "how to incorporate"
   notes, original seed text) is dropped.
 - Titles come from those two headings with the flag removed.
 - Series/part/order come from the vault frontmatter (`series`, `part`,
-  `order`). `series: Standalone…` → no series.
+  `order`). Vault series names map to site slugs through a small table in
+  the script (`The Future of Software` → `the-future-of-software`); an
+  unknown series fails loudly.
 - Normalizes Unicode to NFC (macOS APFS filenames are NFD).
-- Writes `_essays/<NN>-<slug>.md` (series) or `_essays/<slug>.md`
-  (standalone). Deterministic: running it twice yields no diff.
+- Writes `_essays/<NN>-<slug>.md`. Removes stale generated files for the
+  exported series. Deterministic: running it twice yields no diff.
 - Fails loudly if an essay lacks either language section.
 
 ## Repository layout
@@ -142,11 +146,11 @@ docs/superpowers/    specs + plans (excluded from the site)
 
 - `just quick` → `uv run --with pytest pytest -q tests/` covering: section
   split, dropped extra sections, wikilink removal, slugging, frontmatter
-  mapping, standalone handling, NFC normalization, idempotence, failure on
+  mapping, unknown-series failure, NFC normalization, idempotence, failure on
   missing language.
 - No local Jekyll (system Ruby 2.6, no Docker). Site build is verified on
   GitHub: `gh api repos/duboc/duboc.github.io/pages/builds/latest` must be
-  `built`, then `just check` curls `/`, the series hub, all 14 essay URLs,
+  `built`, then `just check` curls `/`, the series hub, all 13 essay URLs,
   `/feed.xml`, and asserts HTTP 200 + both `lang="en"` and `lang="pt-BR"`
   present on essay pages.
 - Manual: open the site in a browser, toggle EN/PT, check dark mode and mobile width.
