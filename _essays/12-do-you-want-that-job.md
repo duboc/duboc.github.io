@@ -48,3 +48,11 @@ A alternativa é desconfortável, inacabada e escancarada, exatamente como o com
 Escolha a sua década.
 
 </section>
+
+<aside class="sources" markdown="1">
+
+<p class="sources-label"><span lang="en">Based on</span><span lang="pt-BR">Baseado em</span></p>
+
+- Thorsten Ball, [*What I believe about the future of software development*](https://thorstenball.com/blog/2026/09/19/what-i-believe-about-the-future-of-software-development/), September 2026.
+
+</aside>

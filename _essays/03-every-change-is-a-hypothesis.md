@@ -48,3 +48,11 @@ Feynman disse primeiro: você não pode enganar a si mesmo, e você é a pessoa 
 Parabéns. Agora você é cientista.
 
 </section>
+
+<aside class="sources" markdown="1">
+
+<p class="sources-label"><span lang="en">Based on</span><span lang="pt-BR">Baseado em</span></p>
+
+- Thomas Dullien, [*An age of experimentation*](https://thomasdullien.github.io/about/slides/An-age-of-experimentation-BlueHat-Asia-2026.pdf), talk at Microsoft BlueHat Asia, Singapore, September 2026.
+
+</aside>
