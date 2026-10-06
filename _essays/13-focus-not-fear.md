@@ -48,11 +48,3 @@ Nada disso pede pânico. Pânico é caro e espalha a atenção justamente quando
 A resposta certa é foco, não medo.
 
 </section>
-
-<aside class="sources" markdown="1">
-
-<p class="sources-label"><span lang="en">Based on</span><span lang="pt-BR">Baseado em</span></p>
-
-- Thomas Dullien, [*An age of experimentation*](https://thomasdullien.github.io/about/slides/An-age-of-experimentation-BlueHat-Asia-2026.pdf), talk at Microsoft BlueHat Asia, Singapore, September 2026.
-
-</aside>

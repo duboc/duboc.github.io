@@ -47,9 +47,6 @@ for file in "${essays[@]}"; do
   name="$(basename "$file" .md)"
   slug="${name#[0-9][0-9]-}"
   check "/essays/${slug}/" yes
-  if grep -q 'class="sources"' "$file" && ! grep -q 'class="sources"' "$tmp"; then
-    echo "FAIL /essays/${slug}/ missing the sources block"; failures=$((failures + 1))
-  fi
 done
 
 if [[ $failures -gt 0 ]]; then

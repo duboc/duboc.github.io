@@ -143,30 +143,10 @@ WITH_SOURCES = SAMPLE.replace(
 )
 
 
-def test_parse_keeps_sources_section():
+def test_parse_drops_sources_section():
     e = parse_essay(WITH_SOURCES)
-    assert e.sources == SOURCE_LINE
-    assert "Seed quote" not in e.sources
+    out = render_essay(e)
     assert "Fontes" not in e.body_pt and "thorstenball" not in e.body_pt
-
-
-def test_parse_without_sources_is_empty():
-    assert parse_essay(SAMPLE).sources == ""
-
-
-def test_parse_source_without_link_fails():
-    bad = WITH_SOURCES.replace(SOURCE_LINE, "- Somebody, a post I forgot to link.")
-    with pytest.raises(ExportError, match="link"):
-        parse_essay(bad)
-
-
-def test_render_sources_block():
-    out = render_essay(parse_essay(WITH_SOURCES))
-    assert '<aside class="sources" markdown="1">' in out
-    assert '<span lang="en">Based on</span><span lang="pt-BR">Baseado em</span>' in out
-    assert out.index("</section>\n\n<section lang=\"pt-BR\"") < out.index('<aside class="sources"')
-    assert SOURCE_LINE in out
-
-
-def test_render_without_sources_has_no_block():
-    assert 'class="sources"' not in render_essay(parse_essay(SAMPLE))
+    assert "thorstenball" not in out
+    assert "Based on" not in out and "Baseado em" not in out
+    assert 'class="sources"' not in out
