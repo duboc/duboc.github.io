@@ -7,15 +7,31 @@ the-future-of-software:
   intro_en: Thirteen one-page essays. Each one stands on its own; read them in order or jump anywhere.
   intro_pt: Treze ensaios de uma página. Cada um se sustenta sozinho; leia em ordem ou pule para qualquer um.
   credit_en: >-
-    Most of these essays began as responses to Thomas Dullien's talk
+    Eleven of these thirteen essays began as responses to Thomas Dullien's talk
     <a href="https://thomasdullien.github.io/about/slides/An-age-of-experimentation-BlueHat-Asia-2026.pdf"><em>An age of experimentation</em></a>
-    (Microsoft BlueHat Asia, Singapore, September 2026) and Thorsten Ball's post
-    <a href="https://thorstenball.com/blog/2026/09/19/what-i-believe-about-the-future-of-software-development/"><em>What I believe about the future of software development</em></a>.
+    (Microsoft BlueHat Asia, Singapore, September 2026), behind essays 01–04 and 13, and Thorsten Ball's post
+    <a href="https://thorstenball.com/blog/2026/09/19/what-i-believe-about-the-future-of-software-development/"><em>What I believe about the future of software development</em></a>
+    (September 2026), behind 02, 06–08 and 10–12.
   credit_pt: >-
-    A maior parte destes ensaios nasceu como resposta à palestra de Thomas Dullien
+    Onze destes treze ensaios nasceram como resposta à palestra de Thomas Dullien
     <a href="https://thomasdullien.github.io/about/slides/An-age-of-experimentation-BlueHat-Asia-2026.pdf"><em>An age of experimentation</em></a>
-    (Microsoft BlueHat Asia, Singapura, setembro de 2026) e ao post de Thorsten Ball
-    <a href="https://thorstenball.com/blog/2026/09/19/what-i-believe-about-the-future-of-software-development/"><em>What I believe about the future of software development</em></a>.
+    (Microsoft BlueHat Asia, Singapura, setembro de 2026), base dos ensaios 01–04 e 13, e ao post de Thorsten Ball
+    <a href="https://thorstenball.com/blog/2026/09/19/what-i-believe-about-the-future-of-software-development/"><em>What I believe about the future of software development</em></a>
+    (setembro de 2026), base dos ensaios 02, 06–08 e 10–12.
+  influences_en: >-
+    They also draw on Richard Feynman's <em>Cargo Cult Science</em> (03);
+    Box, Hunter and Hunter's <em>Statistics for Experimenters</em> (03);
+    Eric S. Raymond's <em>The Cathedral and the Bazaar</em>, a line from William Gibson
+    and Martin Thompson's <em>mechanical sympathy</em> (07);
+    Steve Jobs's interview with the Santa Clara Valley Historical Association (09);
+    and John Boyd's OODA loop (13).
+  influences_pt: >-
+    Também se apoiam em <em>Cargo Cult Science</em>, de Richard Feynman (03);
+    <em>Statistics for Experimenters</em>, de Box, Hunter e Hunter (03);
+    <em>The Cathedral and the Bazaar</em>, de Eric S. Raymond, uma frase de William Gibson
+    e a <em>mechanical sympathy</em> de Martin Thompson (07);
+    a entrevista de Steve Jobs à Santa Clara Valley Historical Association (09);
+    e o ciclo OODA de John Boyd (13).
   parts:
     - {n: 1, en: "I · Discovery", pt: "I · Descoberta"}
     - {n: 2, en: "II · Craft", pt: "II · Ofício"}

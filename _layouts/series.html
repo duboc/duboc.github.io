@@ -10,7 +10,7 @@ layout: default
     <p class="question">{% include lang-title.html en=series.question_en pt=series.question_pt %}</p>
     <p class="intro">{% include lang-title.html en=series.intro_en pt=series.intro_pt %}</p>
     {%- if series.credit_en %}
-    <p class="credit"><span lang="en">{{ series.credit_en }}</span><span lang="pt-BR">{{ series.credit_pt }}</span></p>
+    {% include credit.html series=series %}
     {%- endif %}
   </header>
 

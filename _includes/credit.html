@@ -1,0 +1,10 @@
+{%- assign s = include.series -%}
+<div class="credit">
+  {%- if include.label %}
+  <p class="kicker">{% include lang-title.html en="Inspiration" pt="Inspiração" %}</p>
+  {%- endif %}
+  <p><span lang="en">{{ s.credit_en }}</span><span lang="pt-BR">{{ s.credit_pt }}</span></p>
+  {%- if s.influences_en %}
+  <p><span lang="en">{{ s.influences_en }}</span><span lang="pt-BR">{{ s.influences_pt }}</span></p>
+  {%- endif %}
+</div>

@@ -25,6 +25,9 @@ check() {
 }
 
 check "/"
+if ! grep -q 'class="credit"' "$tmp"; then
+  echo "FAIL / missing the inspiration credit"; failures=$((failures + 1))
+fi
 check "/the-future-of-software/"
 if ! grep -q 'class="credit"' "$tmp"; then
   echo "FAIL /the-future-of-software/ missing the series credit"; failures=$((failures + 1))

@@ -3,6 +3,12 @@ layout: default
 ---
 <section class="intro-home">
   <p class="tagline">{% include lang-title.html en=site.description pt=site.description_pt %}</p>
+  {%- for entry in site.data.series %}
+  {%- assign credited = entry[1] -%}
+  {%- if credited.credit_en %}
+  {% include credit.html series=credited label=true %}
+  {%- endif %}
+  {%- endfor %}
 </section>
 
 {%- for entry in site.data.series %}

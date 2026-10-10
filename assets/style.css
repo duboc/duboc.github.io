@@ -114,8 +114,13 @@ h2 { font-size: 1.5rem; margin: 0 0 0.75rem; }
 
 .question { font-size: 1.35rem; font-style: italic; margin: 0 0 1rem; }
 
+.credit { color: var(--muted); font: 0.9rem/1.55 var(--sans); }
+.credit p { margin: 0 0 0.6rem; }
+.credit p:last-child { margin-bottom: 0; }
+
 /* ---------- Home ---------- */
-.tagline { font-size: 1.5rem; line-height: 1.4; margin: 0 0 3rem; }
+.intro-home { margin-bottom: 3rem; }
+.tagline { font-size: 1.5rem; line-height: 1.4; margin: 0 0 2rem; }
 
 .series-card { border-top: 1px solid var(--rule); padding-top: 2rem; margin-bottom: 3rem; }
 .series-card h2 a { text-decoration: none; }
@@ -131,7 +136,6 @@ h2 { font-size: 1.5rem; margin: 0 0 0.75rem; }
 /* ---------- Series hub ---------- */
 .series-head { margin-bottom: 3rem; }
 .series-head .intro { color: var(--muted); }
-.series-head .credit { color: var(--muted); font: 0.9rem/1.55 var(--sans); }
 .part { margin-bottom: 2.5rem; }
 .part h2 {
   font: 600 0.8rem/1.4 var(--sans);
