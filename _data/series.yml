@@ -18,20 +18,39 @@ the-future-of-software:
     (Microsoft BlueHat Asia, Singapura, setembro de 2026), base dos ensaios 01–04 e 13, e ao post de Thorsten Ball
     <a href="https://thorstenball.com/blog/2026/09/19/what-i-believe-about-the-future-of-software-development/"><em>What I believe about the future of software development</em></a>
     (setembro de 2026), base dos ensaios 02, 06–08 e 10–12.
-  influences_en: >-
-    They also draw on Richard Feynman's <em>Cargo Cult Science</em> (03);
-    Box, Hunter and Hunter's <em>Statistics for Experimenters</em> (03);
-    Eric S. Raymond's <em>The Cathedral and the Bazaar</em>, a line from William Gibson
-    and Martin Thompson's <em>mechanical sympathy</em> (07);
-    Steve Jobs's interview with the Santa Clara Valley Historical Association (09);
-    and John Boyd's OODA loop (13).
-  influences_pt: >-
-    Também se apoiam em <em>Cargo Cult Science</em>, de Richard Feynman (03);
-    <em>Statistics for Experimenters</em>, de Box, Hunter e Hunter (03);
-    <em>The Cathedral and the Bazaar</em>, de Eric S. Raymond, uma frase de William Gibson
-    e a <em>mechanical sympathy</em> de Martin Thompson (07);
-    a entrevista de Steve Jobs à Santa Clara Valley Historical Association (09);
-    e o ciclo OODA de John Boyd (13).
+  # Other authors each essay draws on, by essay number. Names and titles
+  # are the same in both languages.
+  influences:
+    - essays: "03"
+      works: >-
+        Richard Feynman, <em>Cargo Cult Science</em>;
+        George Box, William Hunter &amp; J. Stuart Hunter, <em>Statistics for Experimenters</em>
+    - essays: "05"
+      works: >-
+        Theodore Levitt, <em>The Marketing Imagination</em>;
+        Marshall McLuhan, <em>Understanding Media</em>;
+        Fred Brooks, <em>No Silver Bullet</em>
+    - essays: "06"
+      works: >-
+        Fred Brooks, <em>No Silver Bullet</em>
+    - essays: "07"
+      works: >-
+        Eric S. Raymond, <em>The Cathedral and the Bazaar</em>;
+        William Gibson;
+        Martin Thompson, <em>Mechanical Sympathy</em>
+    - essays: "08"
+      works: >-
+        Harold Abelson &amp; Gerald Jay Sussman, <em>Structure and Interpretation of Computer Programs</em>;
+        Donald Knuth, <em>Structured Programming with go to Statements</em>
+    - essays: "09"
+      works: >-
+        Steve Jobs, Santa Clara Valley Historical Association (1994);
+        George Mack, <em>High Agency</em>;
+        Derek Sivers, <em>Ideas Are Just a Multiplier of Execution</em>;
+        James Clear, <em>Atomic Habits</em>
+    - essays: "13"
+      works: >-
+        John Boyd, OODA
   parts:
     - {n: 1, en: "I · Discovery", pt: "I · Descoberta"}
     - {n: 2, en: "II · Craft", pt: "II · Ofício"}

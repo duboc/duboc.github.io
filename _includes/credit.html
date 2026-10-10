@@ -4,7 +4,12 @@
   <p class="kicker">{% include lang-title.html en="Inspiration" pt="Inspiração" %}</p>
   {%- endif %}
   <p><span lang="en">{{ s.credit_en }}</span><span lang="pt-BR">{{ s.credit_pt }}</span></p>
-  {%- if s.influences_en %}
-  <p><span lang="en">{{ s.influences_en }}</span><span lang="pt-BR">{{ s.influences_pt }}</span></p>
+  {%- if s.influences %}
+  <p>{% include lang-title.html en="They also draw on:" pt="Também se apoiam em:" %}</p>
+  <ul class="credit-list">
+    {%- for i in s.influences %}
+    <li><span class="num">{{ i.essays }}</span> <span>{{ i.works }}</span></li>
+    {%- endfor %}
+  </ul>
   {%- endif %}
 </div>
